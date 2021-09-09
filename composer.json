@@ -1,0 +1,31 @@
+{
+    "name": "sevming/laravel-response",
+    "description": "Laravel Response",
+    "homepage": "https://github.com/sevming/laravel-response",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sevming",
+            "email": "sevming@foxmail.com"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "php": ">=7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sevming\\LaravelResponse\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sevming\\LaravelResponse\\Providers\\LaravelServiceProvider"
+            ],
+            "aliases": {
+                "Response": "Sevming\\LaravelResponse\\Support\\Facades\\Response"
+            }
+        }
+    }
+}
