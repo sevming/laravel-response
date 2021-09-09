@@ -5,7 +5,7 @@ namespace Sevming\LaravelResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\{ResourceCollection, JsonResource};
-use Illuminate\Pagination\AbstractPaginator;
+use Illuminate\Pagination\{AbstractPaginator, AbstractCursorPaginator};
 use Illuminate\Contracts\Support\Arrayable;
 
 class Response
@@ -44,7 +44,7 @@ class Response
             return $this->formatResourceCollectionResponse(...func_get_args());
         }
 
-        if ($data instanceof AbstractPaginator) {
+        if ($data instanceof AbstractPaginator || $data instanceof AbstractCursorPaginator) {
             return $this->formatPaginatedResponse(...func_get_args());
         }
 
@@ -283,7 +283,7 @@ class Response
             $resource->with(\request()),
             $resource->additional
         );
-        if ($resource->resource instanceof AbstractPaginator) {
+        if ($resource->resource instanceof AbstractPaginator || $resource->resource instanceof AbstractCursorPaginator) {
             $paginated = $resource->resource->toArray();
             $paginationInformation = $this->formatPaginatedData($paginated);
             $data = \array_merge_recursive($data, $paginationInformation);
