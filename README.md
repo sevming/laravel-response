@@ -1,8 +1,9 @@
 <h1 align="left">laravel-response</h1>
 
 ## Requirement
-1. PHP >= 7.2
-2. [Composer](https://getcomposer.org/)
+1. PHP >= 7.4
+2. Laravel 8.x
+3. [Composer](https://getcomposer.org/)
 
 
 ## Installing

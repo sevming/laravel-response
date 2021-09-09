@@ -2,7 +2,7 @@
 
 namespace Sevming\LaravelResponse\Support\Traits;
 
-use Exception;
+use Throwable;
 use Sevming\LaravelResponse\Support\Facades\Response;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 use Illuminate\Http\{Request, JsonResponse};
@@ -30,11 +30,11 @@ trait ExceptionTrait
      * Prepare a JSON response for the given exception.
      *
      * @param Request   $request
-     * @param Exception $e
+     * @param Throwable $e
      *
      * @return JsonResponse
      */
-    protected function prepareJsonResponse($request, Exception $e)
+    protected function prepareJsonResponse($request, Throwable $e)
     {
         return Response::error(
             '',
@@ -49,11 +49,11 @@ trait ExceptionTrait
      * Prepare a response for the given exception.
      *
      * @param Request   $request
-     * @param Exception $e
+     * @param Throwable $e
      *
      * @return SymfonyResponse|JsonResponse
      */
-    protected function prepareResponse($request, Exception $e)
+    protected function prepareResponse($request, Throwable $e)
     {
         if (\config('response.is_unified_return_json')) {
             return $this->prepareJsonResponse($request, $e);
